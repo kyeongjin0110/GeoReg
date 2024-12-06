@@ -1,0 +1,26 @@
+area_id,area_name,area_name_en,education_primary,education_secondary,education_high
+1,Bântéay_Méanchey,Banteay Meanchey,0.524,0.4355,0.0405
+2,Bătdâmbâng,Battambang,0.4585,0.4805,0.061
+3,Kâmpóng_Cham,Kampong Cham,0.551224388,0.408295852,0.04047976
+4,Kâmpóng_Chhnăng,Kampong Chhnang,0.515,0.4235,0.0615
+5,Kâmpóng_Spœ,Kampong Speu,0.523738131,0.44077961,0.035482259
+6,Kâmpóng_Thum,Kampong Thom,0.629,0.3335,0.0375
+7,Kâmpôt,Kampot,0.4105,0.5115,0.078
+8,Kândal,Kandal,0.442,0.4955,0.0625
+9,Kaôh_Kŏng,Koh Kong,0.529235382,0.403298351,0.067466267
+10,Krâchéh,Kratie,0.5605,0.3975,0.042
+11,Môndól_Kiri,Mondul Kiri,0.594,0.363,0.043
+12,Phnum_Pénh,Phnom Penh,0.281218781,0.519480519,0.199300699
+13,Preăh_Vihéar,Preah Vihear,0.564,0.388,0.048
+14,Prey_Vêng,Prey Veng,0.450274863,0.48075962,0.068965517
+15,Poŭthĭsăt,Pursat,0.573,0.3845,0.0425
+16,Rôtânôkiri,Ratanak Kiri,0.713143428,0.264367816,0.022488756
+17,Siĕmréab,Siemreap,0.4975,0.407,0.0955
+18,Preăh_Sihanouk,Preah Sihanouk,0.4365,0.4945,0.069
+19,Stoĕng_Trêng,Stung Treng,0.647147147,0.300800801,0.052052052
+20,Svay_Riĕng,Svay Rieng,0.458229115,0.484242121,0.057528764
+21,Takêv,Takeo,0.3775,0.531,0.0915
+22,Ŏtdâr_Méanchey,Otdar Meanchey,0.574,0.391,0.035
+23,Kêb,Kep,0.4545,0.4685,0.077
+24,Pailĭn,Pailin,0.4415,0.4645,0.094
+25,Tbong_Khmŭm,Tboung Khmum,0.532233883,0.428785607,0.03898051
