@@ -44,14 +44,10 @@ Place your pre-processed geospatial and satellite data in the data/ directory. T
 
 ## Usage
 
-1. Run LLM Module Categorization & Feature Discovery
+Run LLM Module Categorization & Feature Discovery
 This step requires an active OpenAI API key.
 export OPENAI_API_KEY="your-api-key-here"
 python run_stage1_llm.py --country KOR --indicator POP
-
-2. Train and Evaluate the Regression Model
-Train the weight-constrained linear regression model using the outputs from Stage 1.
-python run_stage2_regression.py --shots 5 --ensemble_size 5
 
 ## Results
 
