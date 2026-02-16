@@ -47,7 +47,6 @@ Place your pre-processed geospatial and satellite data in the data/ directory. T
 Run LLM Module Categorization & Feature Discovery
 This step requires an active OpenAI API key.
 export OPENAI_API_KEY="your-api-key-here"
-python run_stage1_llm.py --country KOR --indicator POP
 
 ## Results
 
