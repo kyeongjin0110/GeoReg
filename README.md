@@ -56,7 +56,3 @@ python run_stage2_regression.py --shots 5 --ensemble_size 5
 ## Results
 
 GeoReg demonstrates superior performance (average winning rate of 87.2%) compared to traditional regression, visual representation models, and direct LLM inferences across diverse countries (South Korea, Vietnam, Cambodia).
-
-## Contact
-
-For any questions or inquiries, please contact kyeongjin.ahn@kaist.ac.kr or mia.cha@mpi-sp.org.
