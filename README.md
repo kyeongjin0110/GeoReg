@@ -36,12 +36,6 @@ A linear regression model is trained using the selected features. To prevent ove
 ### Prerequisites
 * Python 3.8+
 * OpenAI API Key (for GPT-3.5-turbo / feature discovery)
-* Required packages listed in requirements.txt
-
-### Installation
-git clone https://github.com/kyeongjin0110/GeoReg.git
-cd GeoReg
-pip install -r requirements.txt
 
 ### Data Preparation
 Place your pre-processed geospatial and satellite data in the data/ directory. The expected format is:
@@ -61,18 +55,7 @@ python run_stage2_regression.py --shots 5 --ensemble_size 5
 
 ## Results
 
-GeoReg demonstrates superior performance (average winning rate of 87.2%) compared to traditional regression, visual representation models (Tile2Vec, SimCLR, UrbanCLIP), and direct LLM inferences across diverse countries (South Korea, Vietnam, Cambodia).
-
-## Citation
-
-If you find this work useful for your research, please consider citing our paper:
-
-@article{ahn2024georeg,
-  title={GeoReg: Weight-Constrained Few-Shot Regression for Socio-Economic Estimation using LLM},
-  author={Ahn, Kyeongjin and Han, Sungwon and Lee, Seungeon and Ahn, Donghyun and Kim, Hyoshin and Kim, Jungwon and Kim, Jihee and Park, Sangyoon and Cha, Meeyoung},
-  journal={Applied Earth Observation and Geoinformation},
-  year={2024}
-}
+GeoReg demonstrates superior performance (average winning rate of 87.2%) compared to traditional regression, visual representation models, and direct LLM inferences across diverse countries (South Korea, Vietnam, Cambodia).
 
 ## Contact
 
