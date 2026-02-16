@@ -1,3 +1,79 @@
-# GeoReg
+# GeoReg: Weight-Constrained Few-Shot Regression for Socio-Economic Estimation using LLM
 
-Socio-economic indicators like regional GDP, population, and education levels are crucial for shaping policy decisions and fostering sustainable development. Recent research increasingly utilizes satellite and aerial imagery as well as diverse web-based data, such as geospatial information, to estimate these indicators. A major challenge in this field is the scarcity of labeled data, particularly in developing countries where only a small number of samples may be available. To address this challenge, we introduce GeoReg, a regression model that incorporates these heterogeneous data by leveraging the prior knowledge of large language model (LLM). In our approach, the LLM acts as a 'data engineer', extracting informative features to enable effective estimation in few-shot settings. Specifically, GeoReg employs the LLM to deliver contextual insights into the relationships between data features and the target indicator, categorizing their correlations as Positive, Negative, Mixed, or Irrelevant. These features are then fed into the linear estimator, trained with appropriate weight constraints tailored to each category. To capture nonlinear patterns among features, we further utilize the LLM to identify meaningful feature interactions and integrate them, along with nonlinear transformations, as additional inputs. Experiments conducted across three countries at varying stages of development demonstrate that GeoReg outperforms baselines in estimating socio-economic indicators, even for low-income countries with limited data availability.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+GeoReg is an interpretable and scalable regression framework designed to estimate socio-economic indicators (e.g., Regional GDP, Population, Education levels) in data-scarce regions. By leveraging Large Language Models (LLMs) as "data engineers," GeoReg extracts informative features from heterogeneous data sources (satellite imagery and web-based geospatial info) and applies domain-informed weight constraints to prevent overfitting in few-shot settings.
+
+## Key Features
+
+* Data-Efficient (Few-Shot): Achieves robust performance even with highly limited ground-truth labels (e.g., 3-shot or 5-shot settings).
+* LLM-Driven Inductive Bias: Uses LLMs to categorize feature-target correlations (Positive, Negative, Mixed) and discover complex non-linear feature interactions without needing massive training data.
+* Highly Interpretable: Employs a linear regression backbone with strict weight constraints. You can transparently see exactly how and why specific features (like nightlight or distance to airports) affect the predictions.
+* Multi-Modal Integration: Seamlessly combines satellite imagery (OpenEarthMap, VIIRS) with geospatial attributes (ArcGIS, Natural Earth).
+
+## Model Architecture
+
+The GeoReg pipeline operates in two main stages:
+
+### Stage 1: Knowledge-based Module Categorization & Feature Discovery
+Before training, GeoReg defines various modules to extract structured information (e.g., get_area, get_night_light, count_area). 
+The LLM evaluates the correlation between each module and the target indicator, categorizing them into:
+* Positive (P)
+* Negative (N)
+* Mixed (M)
+* Irrelevant (Discarded)
+
+The LLM also identifies meaningful non-linear feature interactions to capture hidden socio-economic dynamics.
+
+### Stage 2: Linear Regression with Weight Constraints
+A linear regression model is trained using the selected features. To prevent overfitting and align the model with real-world economic logic, weights (beta) are strictly constrained based on the LLM's categorization:
+* beta > 0 for Positive features
+* beta < 0 for Negative features
+* Unconstrained for Mixed features
+
+## Getting Started
+
+### Prerequisites
+* Python 3.8+
+* OpenAI API Key (for GPT-3.5-turbo / feature discovery)
+* Required packages listed in requirements.txt
+
+### Installation
+git clone https://github.com/kyeongjin0110/GeoReg.git
+cd GeoReg
+pip install -r requirements.txt
+
+### Data Preparation
+Place your pre-processed geospatial and satellite data in the data/ directory. The expected format is:
+* data/features/: Contains extracted module outputs (CSV/JSON).
+* data/labels/: Contains few-shot ground-truth indicators (GRDP, Population, etc.).
+
+## Usage
+
+1. Run LLM Module Categorization & Feature Discovery
+This step requires an active OpenAI API key.
+export OPENAI_API_KEY="your-api-key-here"
+python run_stage1_llm.py --country KOR --indicator POP
+
+2. Train and Evaluate the Regression Model
+Train the weight-constrained linear regression model using the outputs from Stage 1.
+python run_stage2_regression.py --shots 5 --ensemble_size 5
+
+## Results
+
+GeoReg demonstrates superior performance (average winning rate of 87.2%) compared to traditional regression, visual representation models (Tile2Vec, SimCLR, UrbanCLIP), and direct LLM inferences across diverse countries (South Korea, Vietnam, Cambodia).
+
+## Citation
+
+If you find this work useful for your research, please consider citing our paper:
+
+@article{ahn2024georeg,
+  title={GeoReg: Weight-Constrained Few-Shot Regression for Socio-Economic Estimation using LLM},
+  author={Ahn, Kyeongjin and Han, Sungwon and Lee, Seungeon and Ahn, Donghyun and Kim, Hyoshin and Kim, Jungwon and Kim, Jihee and Park, Sangyoon and Cha, Meeyoung},
+  journal={Applied Earth Observation and Geoinformation},
+  year={2024}
+}
+
+## Contact
+
+For any questions or inquiries, please contact kyeongjin.ahn@kaist.ac.kr or mia.cha@mpi-sp.org.
